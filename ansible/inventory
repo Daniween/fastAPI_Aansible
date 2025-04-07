@@ -1,2 +1,2 @@
 [webservers]
-mon_serveur ansible_user=admin ansible_host=={{ SERVER_IP }}
+mon_serveur ansible_user=admin ansible_host={{ SERVER_IP }}
