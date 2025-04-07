@@ -15,13 +15,14 @@
         group: "{{ app_user }}"
 
     - name: Ajouter github.com aux known_hosts
-      become: true
-      become_user: serveurweb
       known_hosts:
         path: /home/{{ app_user }}/.ssh/known_hosts
         name: github.com
         key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
         state: present
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+        mode: "0644"
 
     - name: Cloner le dépôt si absent
       git:
@@ -41,6 +42,13 @@
         update: yes
         accept_hostkey: yes
         key_file: /home/{{ app_user }}/.ssh/id_rsa
+
+    - name: Donner les droits à l'utilisateur {{ app_user }}
+      file:
+        path: "{{ app_dir }}"
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+        recurse: yes
 
     - name: Construire et lancer les conteneurs avec Docker Compose
       command: docker-compose up -d
