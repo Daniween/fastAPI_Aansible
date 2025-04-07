@@ -1,4 +1,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9cf82e6b649d493285f4da71ca086ebe)](https://app.codacy.com/gh/Daniween/fastAPI_Ansible/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+![CI/CD](https://github.com/Daniween/fastAPI_Ansible/actions/workflows/deploy.yml/badge.svg)
+![Docker](https://img.shields.io/badge/Docker-ready-blue)
+![Security](https://img.shields.io/badge/Security-Scanned-brightgreen)
 
 # FastAPI Hello World avec Docker déployée avec Ansible
 
