@@ -1,0 +1,4 @@
+---
+app_user: serveurweb
+app_dir: /home/serveurweb/fastapi_app
+git_repo: git@github.com:Daniween/fastAPI_Ansible.git

@@ -1,0 +1,35 @@
+---
+- name: S'assurer que le dossier .ssh existe
+  file:
+    path: "/home/{{ app_user }}/.ssh"
+    state: directory
+    mode: "0700"
+
+- name: Ajouter github.com aux known_hosts
+  known_hosts:
+    path: /home/{{ app_user }}/.ssh/known_hosts
+    name: github.com
+    key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
+    state: present
+
+- name: Cloner le dépôt si absent
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ app_dir }}"
+    version: main
+    update: no
+    accept_hostkey: yes
+
+- name: Faire un git pull
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ app_dir }}"
+    version: main
+    update: yes
+    force: yes
+    accept_hostkey: yes
+
+- name: Lancer docker-compose
+  command: docker-compose up -d
+  args:
+    chdir: "{{ app_dir }}"
