@@ -21,7 +21,6 @@
         version: main
         update: no
         accept_hostkey: yes
-      become_user: "{{ app_user }}"
 
     - name: Faire un git pull
       git:
@@ -31,7 +30,6 @@
         force: yes
         update: yes
         accept_hostkey: yes
-      become_user: "{{ app_user }}"
 
     - name: Construire et lancer les conteneurs avec Docker Compose
       command: docker-compose up -d
