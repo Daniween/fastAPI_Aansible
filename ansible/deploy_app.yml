@@ -35,8 +35,8 @@
         repo: "{{ git_repo }}"
         dest: "{{ app_dir }}"
         version: main
-        force: yes
         update: yes
+        force: yes
         accept_hostkey: yes
         key_file: /home/{{ app_user }}/.ssh/id_rsa
 
