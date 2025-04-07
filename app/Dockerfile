@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Installer les dépendances
-RUN pip install --no-cache-dir fastapi uvicorn
+RUN pip install --no-cache-dir fastapi==0.110.0 uvicorn==0.29.0
 
 # Exposer le port 8000 (le même que dans FastAPI)
 EXPOSE 8000
