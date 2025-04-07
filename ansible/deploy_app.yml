@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    app_user: serveurweb
+    app_dir: /home/serveurweb/fastapi_app
+
+  tasks:
+    - name: S'assurer que le dossier de destination existe
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+
+    - name: Copier les fichiers de l'application
+      copy:
+        src: ../app/
+        dest: "{{ app_dir }}/"
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+        mode: "0755"
+
+    - name: Construire et lancer les conteneurs avec Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: "{{ app_dir }}"
