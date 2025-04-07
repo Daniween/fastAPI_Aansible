@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: ture
+  become: true
   become_user: serveurweb
   vars:
     app_user: serveurweb
