@@ -14,7 +14,7 @@ Avant de démarrer en local ou de déployer, assurez-vous d'avoir installé :
 - [Python 3.10+](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html) (pour déploiement manuel)
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
 ---
 
