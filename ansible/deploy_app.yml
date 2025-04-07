@@ -20,9 +20,6 @@
         name: github.com
         key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
         state: present
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
-        mode: "0644"
 
     - name: Cloner le dépôt si absent
       git:
