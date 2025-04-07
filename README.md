@@ -22,21 +22,21 @@ Avant de démarrer en local ou de déployer, assurez-vous d'avoir installé :
 
 ```
 fastapi-docker-app/
-├── app/ # Code source FastAPI
-│   ├── main.py
-├── Dockerfile # Dockerfile pour builder l'image
-├── docker-compose.yml # Configuration Docker Compose
+├── app/                         # Code source FastAPI
+    └── main.py
+├── Dockerfile                   # Dockerfile pour builder l'image
+├── docker-compose.yml           # Configuration Docker Compose
 ├── .dockerignore
 ├── .gitignore
-└── ansible/ # Dossier Ansible pour le déploiement
-├── deploy_app.yml # Playbook principal
-├── inventory # Fichier d’inventaire
-└── roles/
-└── deploy/ # Rôle Ansible dédié au déploiement
-│   ├── tasks/
-│   │   ├── main.yml
-│   └── vars/
-│   │   ├── main.yml
+└── ansible/                     # Dossier Ansible pour le déploiement
+    ├── deploy_app.yml           # Playbook principal
+    ├── inventory                # Fichier d’inventaire
+    └── roles/
+        └── deploy/              # Rôle Ansible dédié au déploiement
+            ├── tasks/
+                └── main.yml
+            └── vars/
+                └── main.yml
 ```
 
 ## 🏗️ Installation et Exécution
