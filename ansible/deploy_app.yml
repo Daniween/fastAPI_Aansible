@@ -1,7 +1,6 @@
 ---
 - hosts: all
   become: true
-  become_user: serveurweb
   vars:
     app_user: serveurweb
     app_dir: /home/serveurweb/fastapi_app
