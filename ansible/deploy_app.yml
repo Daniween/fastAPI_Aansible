@@ -1,8 +1,7 @@
 ---
 - hosts: all
-  become: true
+  become: ture
   become_user: serveurweb
-
   vars:
     app_user: serveurweb
     app_dir: /home/serveurweb/fastapi_app
@@ -17,14 +16,13 @@
         group: "{{ app_user }}"
 
     - name: Ajouter github.com aux known_hosts
+      become: true
+      become_user: serveurweb
       known_hosts:
         path: /home/{{ app_user }}/.ssh/known_hosts
         name: github.com
         key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
         state: present
-        owner: "{{ app_user }}"
-        group: "{{ app_user }}"
-        mode: "0644"
 
     - name: Cloner le dépôt si absent
       git:
@@ -40,8 +38,8 @@
         repo: "{{ git_repo }}"
         dest: "{{ app_dir }}"
         version: main
-        update: yes
         force: yes
+        update: yes
         accept_hostkey: yes
         key_file: /home/{{ app_user }}/.ssh/id_rsa
 
